@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang = "eng">
+    <head>
+        <meta charset = "utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel = "shortcut icon" href="https://cdn.glitch.com/2bffe172-248e-4931-8e81-ac1e86b1f92f%2Ficon.png?1610029119522" type="image/png">
+        <title>Register | William Gillette Biography</title>
+        <script src = "/client.js"></script>
+        <link rel = "stylesheet" href = "/style.css">
+        <link rel = "preconnect" href="https://fonts.gstatic.com">
+        <link href = "https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;400&display=swap" rel="stylesheet">
+        <link href = "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    </head>
+    <body>
+
+        <div id = "main">
+            <div id = "hdr">
+                <div id = "outsideInfoBar">
+                    <h1 id = "nameTitle">William Gillette | Biography</h1>
+                    <h1 id = "pageTitle">Register</h1>
+                </div>
+            </div>
+
+            <div id = "content">  
+                <section id = "inputForm">
+                    <h2>Account Registration</h2>
+                    <form action = "/register" method = "POST" id = "registerForm" enctype = "multipart/form-data">
+                        <label for="username">Username:</label>
+                        <br>
+                        <input type="text" id="username" name="username" placeholder="Create a username.." required>
+                        <br><br>
+                        <label for="password">Password:</label>
+                        <br>
+                        <input type="password" id="password" name="password" placeholder="Create a password.." required>
+                        <br><br>
+                        <label for="password">Confirm Password:</label>
+                        <br>
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password.." required>
+                        <br><br>
+                        <label for="email">Enter your email:</label>
+                        <br>
+                        <input type="email" id="email" name="email" placeholder="Enter your email.. example@gmail.com" required>
+                        <br><br>
+                        <label for="avatarUpload">Upload your avatar:</label>
+                        <br>
+                        <input type="file" id="avatarUpload" name="avatarUpload" onchange="return fileValidation()">
+                        <br>
+                        <img id="imagePreview" src = "https://cdn.glitch.com/2bffe172-248e-4931-8e81-ac1e86b1f92f%2Fdefault3.png?v=1610734688490">
+                        <br><br>
+                        <input id = "submitButton" type = "submit" value="Register">
+                    </form>
+                    <p class = "formBottom">Click <a href="login">here</a> to return to the login page.</p>                   
+                      
+                    <%if(typeof error != "undefined"){%>
+                      <p class = "formBottom" id = "errorMessage"><%= `Error: ${error}` %></p>
+                    <%}%>
+                </section>
+            </div>
+        </div>
+    </body>
+
+</html>

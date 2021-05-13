@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang = "eng">
+    <head>
+        <meta charset = "utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel = "shortcut icon" href="https://cdn.glitch.com/2bffe172-248e-4931-8e81-ac1e86b1f92f%2Ficon.png?1610029119522" type="image/png">
+        <title>Forgot Password | William Gillette Biography</title>
+        <script src = "/client.js"></script>
+        <link rel = "stylesheet" href = "/style.css">
+        <link rel = "preconnect" href="https://fonts.gstatic.com">
+        <link href = "https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;400&display=swap" rel="stylesheet">
+        <link href = "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    </head>
+    <body>
+
+        <div id = "main">
+            <div id = "hdr">
+                <div id = "outsideInfoBar">
+                    <h1 id = "nameTitle">William Gillette | Biography</h1>
+                    <h1 id = "pageTitle">Forgot Password</h1>
+                </div>
+            </div>
+
+            <div id = "content">  
+                <section id = "inputForm">
+                    <h2>User Login</h2>
+                    <form action = "/reset" method = "POST" id = "loginForm">
+                        <label for="newPassword">New Password:</label>
+                        <br>
+                        <input type="password" id="newPassword" name="newPassword" placeholder="Enter your new password.." required>
+                        <br><br>
+                        <input type = "submit" id = "submitButton" value="Request">
+                    </form>
+                    <p class = "formBottom">Click <a href="login">here</a> to return to the login page.</p>  
+                    <%if(typeof error != "undefined"){%>
+                      <p class = "formBottom" id = "errorMessage"><%= `Error: ${error}` %></p>
+                    <%}%>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

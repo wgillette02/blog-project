@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="eng">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel = "shortcut icon" href="https://cdn.glitch.com/2bffe172-248e-4931-8e81-ac1e86b1f92f%2Ficon.png?1610029119522" type="image/png">
+        <link rel = "stylesheet" href = "/style.css">
+        <link rel = "preconnect" href="https://fonts.gstatic.com">
+        <link href = "https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;400&display=swap" rel="stylesheet">
+        <link href = "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+        <script src="/client.js"></script>
+        <title>Settings | William Gillette Biography</title>
+    </head>
+    <body> 
+        <div id = "scrollbar">
+            <h1 id = "directoryTitle">Directory</h1>
+            <nav>
+                <div class = "sideBarLink">
+                    <a href = "/">Home</a>
+                </div>
+                <div class = "sideBarLink">
+                    <details>
+                        <summary>Life Goals</summary>
+                        <a class = "subMenu" href = "https://www.roblox.com">Running</a>
+                        <a class = "subMenu" href = "https://www.roblox.com">Career</a>
+                        <a class = "subMenu" href = "https://www.roblox.com">Relationships</a>
+                    </details>
+                </div>
+                
+                <div class = "sideBarLink">
+                    <a href = "/createPost">Create Post</a>
+                </div>
+                <div class = "sideBarLink">
+                    <a href = "/settings">Settings</a>
+                </div>
+            </nav>
+        </div> 
+        <div id = "main">
+            <div id = "hdr">
+                <input type = "image" src = "https://cdn.glitch.com/2bffe172-248e-4931-8e81-ac1e86b1f92f%2Fthumbnails%2FmenuIcon.png?1610029119543" onclick = "toggleSideBar()" id = "toggleSideBar">
+                <div id = "infoBar">
+                    <h1 class = "indexNameTitle" id = "nameTitle">William Gillette | Biography</h1>
+                    <%if(typeof avatar != "undefined"){%>
+                      <img src = <%=avatar %> id = "avatarImg">
+                    <% } else{ %>
+                      <img src = "https://cdn.glitch.com/2bffe172-248e-4931-8e81-ac1e86b1f92f%2Fdefault3.png?v=1610734688490" id = "avatarImg">
+                    <% } %>
+                    <%if(typeof name != "undefined"){%>
+                      <h1 class = indexPageTitle id = "pageTitle"><%= `Welcome, ${name}!` %></h1>
+                    <%}%>
+                </div>
+                <form action = "/logout?_method=DELETE" method = "POST">
+                  <input id = "logoutBtn" type = "submit" value="Logout">
+                </form>
+            </div>
+
+            <div id = "content">  
+                <section id = "inputForm">
+                    <h2>User Settings</h2>
+                    <form action = "/settings" method = "POST" id = "settingsForm" enctype = "multipart/form-data">
+                        <%if(typeof name != "undefined"){%>
+                          <input type="hidden" name="username" value=<%=name%> />
+                        <%}%>
+                        <label for="password">Update Password:</label>
+                        <br>
+                        <input type="password" id="password" name="password" placeholder="Update your password..">
+                        <br><br>
+                        <label for="password">Confirm Password:</label>
+                        <br>
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password..">
+                        <br><br>
+                        <label for="email">Update Email:</label>
+                        <br>
+                        <input type="email" id="email" name="email" placeholder="Update your email.. example@gmail.com">
+                        <br><br>
+                        <label for="bio">Update Bio:</label>
+                        <br>
+                        <textarea name="bio" rows="8" cols="16"><%=bio || "Enter your bio here.."%></textarea>
+                        <br><br>
+                        <label for="avatarUpload">Update avatar:</label>
+                        <br>
+                        <input type="file" id="avatarUpload" name="avatarUpload" onchange="return fileValidation()">
+                        <br>
+                        <img id="imagePreview" src = "https://cdn.glitch.com/2bffe172-248e-4931-8e81-ac1e86b1f92f%2Fdefault3.png?v=1610734688490">
+                        <br><br>
+                        <input id = "submitButton" type = "submit" value="Save">
+                    </form>                   
+                      
+                    <%if(typeof error != "undefined"){%>
+                      <p class = "formBottom" id = "errorMessage"><%= `Error: ${error}` %></p>
+                    <%}%>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

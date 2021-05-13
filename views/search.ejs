@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="eng">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel = "shortcut icon" href="https://cdn.glitch.com/2bffe172-248e-4931-8e81-ac1e86b1f92f%2Ficon.png?1610029119522" type="image/png">
+        <link rel = "stylesheet" href = "/style.css">
+        <link rel = "preconnect" href="https://fonts.gstatic.com">
+        <link href = "https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;400&display=swap" rel="stylesheet">
+        <link href = "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="/client.js"></script>
+        <title>Home | William Gillette Biography</title>
+    </head>
+    <body> 
+        <div id = "scrollbar">
+            <h1 id = "directoryTitle">Directory</h1>
+            <nav>
+                <div class = "sideBarLink">
+                    <a href = "/">Home</a>
+                </div>
+                <div class = "sideBarLink">
+                    <details>
+                        <summary>Life Goals</summary>
+                        <a class = "subMenu" href = "https://www.roblox.com">Running</a>
+                        <a class = "subMenu" href = "https://www.roblox.com">Career</a>
+                        <a class = "subMenu" href = "https://www.roblox.com">Relationships</a>
+                    </details>
+                </div>
+                
+                <div class = "sideBarLink">
+                    <a href = "/createPost">Create Post</a>
+                </div>
+                <div class = "sideBarLink">
+                    <a href = "/settings">Settings</a>
+                </div>
+            </nav>
+        </div> 
+        <div id = "main">
+            <div id = "hdr">
+                <input type = "image" src = "https://cdn.glitch.com/2bffe172-248e-4931-8e81-ac1e86b1f92f%2Fthumbnails%2FmenuIcon.png?1610029119543" onclick = "toggleSideBar()" id = "toggleSideBar">
+                <div id = "infoBar">
+                    <h1 class = "indexNameTitle" id = "nameTitle">William Gillette | Biography</h1>
+                    <div class="search-container">
+                      <form method = "POST" action="/search">
+                        <input type="text" placeholder="Search.." name="query">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                      </form>
+                    </div>
+                    <%if(typeof avatar != "undefined"){%>
+                      <img src = <%=avatar %> id = "avatarImg">
+                    <% } else{ %>
+                      <img src = "https://cdn.glitch.com/2bffe172-248e-4931-8e81-ac1e86b1f92f%2Fdefault3.png?v=1610734688490" id = "avatarImg">
+                    <% } %>
+                    <%if(typeof name != "undefined"){%>
+                      <h1 class = indexPageTitle id = "pageTitle"><%= `Welcome, ${name}!` %></h1>
+                    <%}%>
+                </div>
+                <form action = "/logout?_method=DELETE" method = "POST">
+                  <input id = "logoutBtn" type = "submit" value="Logout">
+                </form>
+            </div>
+
+            <div id = "content">
+                <section class = "HomeInfo">
+                    <h2>Search Results</h2>
+                    <% if (typeof results != "undefined"){%>
+                      <% for(var i=0; i < results.length; i++) { %>
+                        <%if (results[i].username){%>
+                          <section class = "searchPost">
+                            <h3 class = "searchTitle"><%=results[i].username%></h2>
+                            <img src="app/uploads/<%=results[i].username%>/avatar.png" id="searchAvatar">
+                            <input type = "button" onclick = "location.href = '/users/<%=results[i].username%>'" class = "searchViewButton" value = "VIEW PROFILE"></input>
+                          </section>
+                        <%}%>
+                      <%}%>
+                    <%}%>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>
